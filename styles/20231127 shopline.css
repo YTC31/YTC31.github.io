@@ -1,0 +1,189 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    margin: auto;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+}
+
+.navigationBar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 200px;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+}
+
+.navigationBar .logo{
+    width: calc(100%/8);
+    margin: 0px 15px;
+}
+
+.navigationBar ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.navigationBar ul li{
+    margin: 0px 15px;
+}
+.navigationBar ul li:hover{
+    text-decoration-color: #0161FF;
+    text-decoration-line: underline;
+    text-underline-offset: 10px; 
+}
+
+.navigationBar .CTAButton{
+    display: inline-block;
+    margin-left: 25px;
+    padding: 15px;
+    border-radius: 4%;
+    background-color: #0161FF;
+    color: white;;
+}
+
+.navigationBar .CTAButton:hover{
+    background-color: navy;
+}
+
+section.slogan {
+    width: 100%;
+    background-color: #f7f8f9;
+    padding: 150px 50px 64px;
+    text-align: center;
+}
+
+section.slogan  h2 {
+    font-size: 200%;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+section.slogan  p {
+    font-weight: lighter;
+}
+
+section.sellingPoints {
+    width: 100%;
+    padding: 0px 180px;
+    margin: 0 auto;
+}
+
+div.sellingPoint {
+    width: 100%;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sellingPoint .description {
+    margin: 30px;
+}
+
+.sellingPoint .image {
+    width: 100%;
+}
+
+
+.sellingPoint .description h3 {
+    font-size: 150%;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.sellingPoint .description p {
+    font-weight: lighter;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.sellingPoint .description p a {
+    color: #0161FF;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.sellingPoint .description p a:hover {
+    position: relative;
+    font-weight: 600;
+    left: 10px;
+
+}
+
+.sellingPoint .description ul {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sellingPoint .description ul li {
+    padding: 10px;
+    width: 50%;
+}
+
+/* 藍色項目符號：https://tools.wingzero.tw/article/sn/715｜https://www.w3.org/Style/Examples/007/color-bullets.zh_HK.html*/
+.sellingPoint .description ul li::before {
+    content: "●";
+    color: #0161FF;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    margin-left: -0.5rem;
+}
+
+
+section.moreService {
+    width: 100%;
+    background-color: #f7f8f9;
+    padding: 64px 200px;
+    box-sizing: border-box;
+    margin: 50px auto 0px;
+}
+
+.moreService h3 {
+    width: 100%;
+    font-size: 200%;
+    font-weight: bold;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.serviceItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.serviceItem {
+    width: calc(100%/3);
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.serviceItem img {
+    width: 30%;
+    margin-bottom:24px;
+}
+
+.serviceItem h4 {
+    font-size: 125%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.serviceItem p {
+    margin: 30px
+}
