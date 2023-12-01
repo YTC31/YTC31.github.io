@@ -1,0 +1,133 @@
+*{
+    font-family: 'Noto Sans JP', sans-serif;
+    box-sizing: border-box;
+}
+
+section.latest{
+    width: 1200px;
+    border-top: 2px solid black;
+    margin: 100px 100px;
+    
+}
+
+section.latest h3{
+    font-weight: medium;
+    font-size: large;
+    color: black;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.topic{
+    width: 100%;
+    border-top: 1.5px solid lightgray;
+    margin: 60px 0px;
+
+}
+
+
+.topic-heading-area{
+    display: flex;
+    margin: 25px 0px 40px;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.topic-content-area{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 25px 0px;
+    gap: 20px;
+}
+
+.topic-heading-area h4{
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.topic-heading-area h4 span{
+    color: lightgray;
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+.topic-heading-area p a{
+    color: red;
+    font-size: 14px;
+    margin: 0px 20px;
+    text-decoration: none;
+}
+
+.topic-heading-area p a::after{
+    content: "➜";
+    color: red;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.topic-content-area .article-block{
+    width:calc(100%/4);
+
+}
+
+.topic-content-area .article-block:nth-child(1){
+    width:calc(100%/4*2);  
+}
+
+.article-item{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.article-item .text h5, .article-item .text p, .article-item .text time{
+    margin: 20px 0px;
+}
+ 
+.article-item figure img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.article-item .text h5{
+    color: black;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.article-item .text p{
+    color: gray;
+    font-weight: lighter;
+}
+
+.article-item .text time
+,.article-item figure figcaption{
+    color: gray;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.article-item figure .figcaption-null{
+    visibility: hidden;
+    /* 保留空間但隱藏內容：https://www.runoob.com/css/css-display-visibility.html */
+}
+
+.article-item .text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.article-item .text p{
+    flex-grow: 1;
+}
+
+div.topic:nth-child(odd) .topic-content-area{
+    display: flex;
+    flex-direction: row-reverse; 
+}
+
+
