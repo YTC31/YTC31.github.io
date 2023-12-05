@@ -1,0 +1,213 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+/* 容器尺寸、背景顏色、內容物排列方式 */
+html{
+    background-color:#FEFEFE;
+}
+
+body{
+    width: 100vw;
+    padding: 50px;
+}
+
+section.five-features{
+    width: 100%;
+    padding: 40px 80px;
+}
+
+div.feature{
+    width: 80%;
+    margin: 0 auto 500px;
+    padding: 20px 40px;
+}
+div.header{
+    width: 40%;
+}
+
+div.title{
+    background-color: #BA0404;
+    width: 100%;
+    padding: 5px 5px 5px 0px;
+    display: flex;
+    align-items: center;
+}
+
+div.abstract{
+    background-color: #000000;
+    width: 100%;
+    padding: 20px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+div.image{
+    width: 70%;
+}
+
+div.description{
+    width: 70%;
+    padding: 20px;
+    background-color: #EEEEEE;
+    text-align: left;
+    line-height: 1.5;
+}
+
+div.gray-block{
+    background-color: #F2F2F2;
+    width: 450px;
+    height: 300px;
+}
+
+
+/* 容器定位 */
+
+div.feature{
+    position: relative;
+}
+
+div.header{
+    position: relative;
+    z-index: 1;
+}
+
+.feature:nth-child(odd) div.image{
+    /* position: relative;
+    top: -224px;
+    left: 150px; */
+    position:absolute;
+    top: 130px;
+    left: 200px;
+}
+
+.feature:nth-child(even) div.image{
+    /* position: relative;
+    top: -224px;
+    right: 150px; */
+    position: absolute;
+    top: 130px;
+    right: 200px;
+
+}
+
+.feature:nth-child(odd) div.description{
+    /* position: relative;
+    top: -250px;
+    left: 50px; */
+
+    position: absolute;
+    top: 500px;
+    left: 100px;
+
+    /* position: relative;
+    top: 145px;
+    left: 50px; */
+}
+
+.feature:nth-child(even) div.description{
+    /* position: relative;
+    top: -250px;
+    right: 50px; */
+
+    position: absolute;
+    top: 500px;
+    right: 100px;
+
+    /* position: relative;
+    top: 145px;
+    right: 50px; */
+}
+
+.feature:nth-child(odd) div.gray-block{
+    position: absolute;
+    top: 50px;
+    left: 500px;
+}
+
+.feature:nth-child(even) div.gray-block{
+    position: absolute;
+    top: 50px;
+    right: 200px;
+}
+
+/* 容器內的物件方向 */
+.feature:nth-child(even){
+    direction: rtl;
+}
+
+.abstract, .image, .description{
+    direction: ltr;
+}
+
+
+/* 物件尺寸、外觀 */
+.header{
+    color: white;
+}
+
+.title h2{
+    font-size: 50px;
+    font-weight: 300;
+}
+
+.title span{
+    font-size: 100px;
+    font-weight: 100;
+    transform: rotate(90deg);
+    
+}
+
+.abstract h3{
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.abstract p{
+    font-size: 18px;
+    font-weight: 100;
+    margin-bottom: 30px;
+}
+
+.description h4{
+    font-size: 18px;
+    font-weight: 500;
+    color: #BA0404;
+}
+
+.description h5{
+    display: inline-block; 
+    font-size: 16px;
+    font-weight: 300;
+    color:white;
+    padding: 0px 5px;
+    background-color: black;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.description p{
+    font-size: 14px; 
+    color: gray;
+    margin-top: 5px;
+}
+
+.image img{
+    width: 100%;
+    vertical-align: middle;
+}
+
+/* 偽元素 */
+.description h4::after{
+    content:"—————————————————";
+    color: #BA0404;
+    margin-left: 20px;
+}
+
+.description p::before{
+    content: "・";
+    color: #BA0404;
+}
