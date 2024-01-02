@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GuessGame</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+
+      font-family: Microsoft JhengHei, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+
+      background-image:
+        linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
+      background-size: cover;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btnGroup {
+      margin: 10px;
+    }
+
+    .btnGroup {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      background-color: rgb(192, 255, 217);
+      border-radius: 50%;
+    }
+
+    .btnGroup:hover {
+      background-color: rgb(0, 128, 102);
+      border-radius: 50%;
+      color: aliceblue;
+    }
+
+
+    input {
+      padding: 8px;
+      font-size: 16px;
+      margin-right: 8px;
+      text-align: center;
+    }
+
+    #result {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    #feedback {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="game-container">
+    <h1>猜數字遊戲-練習版</h1>
+    <div>
+      <input type="button" class="btnGroup" value="1" />
+      <input type="button" class="btnGroup" value="2" />
+      <input type="button" class="btnGroup" value="3" />
+      <input type="button" class="btnGroup" value="4" />
+      <input type="button" class="btnGroup" value="5" />
+      <input type="button" class="btnGroup" value="6" />
+      <input type="button" class="btnGroup" value="7" />
+      <input type="button" class="btnGroup" value="8" />
+      <input type="button" class="btnGroup" value="9" />
+      <input type="button" class="btnGroup" value="0" />
+    </div>
+
+    <input type="text" id="guess-input"  value="" />
+    <input type="button" value="確認數值" />
+    <input type="button" value="清除數值" onclick="" />
+    <input type="button" value="看答案" />
+    <input type="button" value="重新遊戲" />
+    <p id="result">輸入數字～開始遊戲！</p>
+    <p class="highlight">請輸入0~100之間的數字</p>
+
+  </div>
+
+  <script>
+    //Variables
+    let answer
+    let start = 0
+    let end = 100
+    let guessInput = document.getElementById("guess-input")
+    let btnNum = document.querySelectorAll(".btnGroup")
+    let btnCheck = document.querySelector('input[value="確認數值"]')
+    let btnClear = document.querySelector('input[value="清除數值"]')
+    let btnAnswer = document.querySelector('input[value="看答案"]')
+    let btnRestart = document.querySelector('input[value="重新遊戲"]')
+    let result = document.getElementById("result")
+    let highlight = document.querySelector(".highlight")
+
+    //Event Registration
+
+    btnNum.forEach(btn => {
+      btn.addEventListener('click', () => {
+        guessInput.value += btn.value
+      })
+    })
+
+    btnCheck.addEventListener('click',checkAnswer)
+    
+    btnClear.addEventListener('click', () => {
+      guessInput.value = ""
+    })
+
+    btnAnswer.addEventListener('click',() => {
+      alert(`答案是：${answer}`)
+    })
+
+    btnRestart.addEventListener('click',() => {
+      location.reload()
+    })
+
+    //function
+
+    function checkAnswer() {
+      let guess = parseInt(guessInput.value) //這邊要加 value!!
+      if (isNaN(guess) || guess >= end || guess <= start) {
+        result.style.color = "red"
+        result.innerText = "登愣！請輸入有效數字！"
+      }else if(guess === answer){
+        result.style.color = "purple"
+        result.innerText = "放鞭炮～恭喜猜對！"
+        
+      }else if((guess > answer)){
+        end = guess
+        result.style.color = "brown"
+        result.innerText = "越來越接近！猜下一個數字"
+      }else if(guess < answer){
+        start = guess
+        result.style.color = "brown"
+        result.innerText = "越來越接近！猜下一個數字"
+      }
+      highlight.innerText = `請輸入 ${start} ~ ${end} 之間的數字`
+      guessInput.value = ""
+      }
+
+    window.onload = function () {
+      answer = Math.floor(Math.random() * 101)
+    }
+
+  </script>
+</body>
+
+</html>
