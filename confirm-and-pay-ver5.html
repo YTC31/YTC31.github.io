@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>確認並付款</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        h2 span:hover {
+            /* border-radius: 50%; */
+            background-color: #EBEBEB;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+
+        u:hover {
+            cursor: pointer;
+        }
+
+        a {
+            color: black;
+        }
+
+        .room-name,
+        .room-type,
+        .room-rating {
+            display: -webkit-box;
+            /* 設定顯示 1 行 */
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .room-name {
+            /* 設定顯示 2 行 */
+            -webkit-line-clamp: 2;
+        }
+
+        .booking-button {
+            background-color: #DE1361;
+            cursor: pointer;
+        }
+
+        .mobile-divider {
+            background-color: #EBEBEB;
+            height: 8px;
+        }
+
+        @media screen and (min-width:768px) {
+            .room-area {
+                border: 1px solid gray;
+                border-radius: 20px;
+                padding: 25px;
+                margin-top: 24px;
+                position: sticky;
+                top: 20px;
+            }
+
+            .room-details,
+            .bill-statement {
+                border-bottom: 1.5px solid #DDDDDD;
+                margin-bottom: 20px;
+            }
+
+            .trip-details,
+            .payment-method,
+            .cancellation-policy {
+                border-bottom: 1.5px solid #DDDDDD;
+            }
+        }
+
+        /* .room-details{
+            box-shadow: 0px 8px 0px 0px #EBEBEB;
+        } */
+    </style>
+</head>
+
+<body>
+    <h2 class="container text-center text-md-start pt-5 d-none d-md-block">
+        <span class="material-symbols-outlined align-center p-3 rounded-circle">chevron_left</span>
+        確認並付款
+    </h2>
+    <div class="order-content container-md d-md-flex flex-md-row-reverse justify-content-md-between align-items-start">
+        <section class="room-area container py-4 col-md-5">
+            <div class="room-details d-flex gap-3 py-4" style="height: 150px;">
+                <img src="https://picsum.photos/300/200/?random=10" alt="房源照片" class="room-photo rounded">
+                <div class="room-description d-inline-block">
+                    <p class="room-name fw-semibold mb-1">「全新」您所看到的一切都是新的！台中一中街乾淨明亮陽台雙人房</p>
+                    <p class="room-type mb-1">出租房源中的房間</p>
+                    <p class="room-rating mb-1">
+                        <span>&#9733</span>4.74
+                        <span class="room-review-count">(214 則評價)</span>
+                    </p>
+                </div>
+            </div>
+            <div class="price-details">
+                <h3 class="py-3 ">價格詳情</h3>
+                <div class="bill-statement">
+                    <div class="room-price-before-tax d-flex justify-content-between">
+                        <p class="d-inline-block">$850.00 TWD x 1 晚</p>
+                        <p class="d-inline-block">$850.00 TWD</p>
+                    </div>
+                    <div class="discount d-flex justify-content-between">
+                        <p class="d-inline-block">早鳥優惠</p>
+                        <p class="d-inline-block">-$17.00 TWD</p>
+                    </div>
+                    <div class="tax d-flex justify-content-between">
+                        <p class="d-inline-block">稅費</p>
+                        <p class="d-inline-block">$874.65</p>
+                    </div>
+                </div>
+                <div class="bill-total">
+                    <div class="price-total fw-semibold d-flex justify-content-between">
+                        <p class="d-inline-block">總價
+                            <span class="currency"><u>(TWD)</u></span>
+                        </p>
+                        <p class="d-inline-block"> $874.65</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="mobile-divider d-md-none"></div>
+        <section class="order-area col-md-6">
+            <div class="trip-details container py-4">
+                <h3 class="py-3">你的旅程</h3>
+                <div class="trip-dates d-flex justify-content-between">
+                    <div class="date-area d-inline-block">
+                        <h4 class="py-2">日期</h4>
+                        <p class="date">3月28日至29日</p>
+                    </div>
+                    <div class="d-inline-block">
+                        <u class="fw-semibold">編輯</u>
+                    </div>
+                </div>
+                <div class="trip-guests d-flex justify-content-between">
+                    <div class="guests-area d-inline-block">
+                        <h4 class="py-2">房客人數</h4>
+                        <p class="headcount">1 人</p>
+                    </div>
+                    <div class="d-inline-block">
+                        <u class="fw-semibold" data-bs-toggle="modal" data-bs-target="#editHeadcount">編輯</u>
+                    </div>
+                    <!-- 編輯房客人數 Modal -->
+                    <div class="modal fade" id="editHeadcount" tabindex="-1" aria-labelledby="退訂政策詳情"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <div class="mt-3">
+                                        <h5 class="modal-title fs-3" id="exampleModalLabel">房客人數</h5>
+                                    </div>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <div class="row row-cols-2 gy-3 gx-0 py-3 px-2 justify-content-between">
+                                            <div>
+                                                <div>成人</div>
+                                                <div style="font-size: 0.75rem;">年滿 13 歲</div>
+                                            </div>
+                                            <div class="text-end">
+                                                <button type="button"
+                                                    class="btn rounded-circle me-1 px-2 py-1 btn-count">
+                                                    <img src="./images/reduce.svg" class="w-75 h-75 align-baseline"
+                                                        alt="reduce-icon">
+                                                </button>
+                                                <span class="align-middle">0</span>
+                                                <button type="button"
+                                                    class="btn rounded-circle ms-1 px-2 py-1 btn-count">
+                                                    <img src="./images/add.svg" class="w-75 h-75 align-baseline"
+                                                        alt="add-icon">
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <div>兒童</div>
+                                                <div style="font-size: 0.75rem;">2 - 12 歲</div>
+                                            </div>
+                                            <div class="text-end">
+                                                <button type="button"
+                                                    class="btn rounded-circle me-1 px-2 py-1 btn-count">
+                                                    <img src="./images/reduce.svg" class="w-75 h-75 align-baseline"
+                                                        alt="reduce-icon">
+                                                </button>
+                                                <span class="align-middle">0</span>
+                                                <button type="button"
+                                                    class="btn rounded-circle ms-1 px-2 py-1 btn-count">
+                                                    <img src="./images/add.svg" class="w-75 h-75 align-baseline"
+                                                        alt="add-icon">
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <div>嬰幼兒</div>
+                                                <div style="font-size: 0.75rem;">2 歲以下</div>
+                                            </div>
+                                            <div class="text-end">
+                                                <button type="button"
+                                                    class="btn rounded-circle me-1 px-2 py-1 btn-count">
+                                                    <img src="./images/reduce.svg" class="w-75 h-75 align-baseline"
+                                                        alt="reduce-icon">
+                                                </button>
+                                                <span class="align-middle">0</span>
+                                                <button type="button"
+                                                    class="btn rounded-circle ms-1 px-2 py-1 btn-count">
+                                                    <img src="./images/add.svg" class="w-75 h-75 align-baseline"
+                                                        alt="add-icon">
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <div>寵物</div>
+                                                <div class="text-decoration-underline" style="font-size: 0.75rem;">
+                                                    會攜帶服務性動物嗎？</div>
+                                            </div>
+                                            <div class="text-end">
+                                                <button type="button"
+                                                    class="btn rounded-circle me-1 px-2 py-1 btn-count">
+                                                    <img src="./images/reduce.svg" class="w-75 h-75 align-baseline"
+                                                        alt="reduce-icon">
+                                                </button>
+                                                <span class="align-middle">0</span>
+                                                <button type="button"
+                                                    class="btn rounded-circle ms-1 px-2 py-1 btn-count">
+                                                    <img src="./images/add.svg" class="w-75 h-75 align-baseline"
+                                                        alt="add-icon">
+                                                </button>
+                                            </div>
+                                            <div class="col-12" style="font-size: 0.75rem;">
+                                                此房源最多可供 2 人入住（不包括嬰幼兒）。不接受寵物入住。
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-between">
+                                            <button type="button"
+                                                class="btn btn-outline-light text-dark text-decoration-underline px-0"
+                                                data-bs-dismiss="modal">
+                                                取消
+                                            </button>
+                                            <button type="button" class="btn btn-dark text-white px-4">
+                                                儲存
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-divider d-md-none"></div>
+            <div class="payment-method container py-4">
+                <div class="d-flex justify-content-between">
+                    <h3 class="py-3 d-inline-block">付款方式</h3>
+                    <div class="d-flex align-content-center gap-2">
+                        <img src="./images/visa.svg" alt="" style="width: 30px;">
+                        <img src="./images/amex.svg" alt="" style="width: 30px;">
+                        <img src="./images/mastercard.svg" alt="" style="width: 30px;">
+                        <img src="./images/googlePay.svg" alt="" style="width: 30px;">
+                    </div>
+                </div>
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected>請選擇</option>
+                    <option value="1" class="credit-card-last-four-nums">••••0105</option>
+                    <hr class="dropdown-divider">
+                    <option value="1">信用卡或簽帳卡</option>
+                    <option value="2">LINE Pay</option>
+                    <option value="3">Google Pay</option>
+                    <option value="4">Apple Pay</option>
+                </select>
+
+            </div>
+            <div class="mobile-divider d-md-none"></div>
+            <div class="cancellation-policy container py-4">
+                <h3 class="py-3">退訂政策</h3>
+                <p>
+                    <strong class="cancellation-deadline">在3月27日前可以免費取消。</strong>在這之後，該筆預訂則無法退款。
+                    <u class="fw-semibold cancellation-more-info" data-bs-toggle="modal"
+                        data-bs-target="#cancellationModal">了解詳情</u>
+                </p>
+                <!-- 退訂政策了解詳情 MODAL -->
+                <div class="modal fade" id="cancellationModal" tabindex="-1" aria-labelledby="退訂政策詳情"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="mt-3">
+                                    <h5 class="modal-title fs-3" id="exampleModalLabel">《退訂政策》</h5>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h6 class="fs-5 py-3">取消截止時間</h6>
+                                <div class="d-flex border-bottom border-light border-2 pt-3">
+                                    <p class="date-full-refund fw-semibold">5月1日
+                                        <span class="time-full-refund d-block fw-normal">下午3:00</span>
+                                    </p>
+                                    <p class="ms-5">全額退款：你將拿回已支付的全部款項。</p>
+                                </div>
+                                <div class="d-flex border-bottom border-light border-2 pt-3">
+                                    <p class="date-no-refund fw-semibold">5月2日
+                                        <span class="time-no-refund d-block fw-normal">下午3:00</span>
+                                        <span class="d-block fw-normal">（入住）</span>
+                                    </p>
+                                    <p class="ms-5">無法退款</p>
+                                </div>
+                                <p class="fw-semibold my-4"><u>了解更多有關《退訂政策》的事宜</u></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-divider d-md-none"></div>
+            <div class="cancellation-policy container py-4">
+                <h3 class="py-3">基本守則</h3>
+                <p>我們請房客記得遵守幾個簡單的事項，當個優質的房客。</p>
+                <ul>
+                    <li>遵守《房屋守則》</li>
+                    <li>把房源當成自己的家來愛護</li>
+                </ul>
+            </div>
+            <div class="mobile-divider d-md-none"></div>
+            <div class="booking container py-4">
+                <p class="booking-consent py-3">點選以下按鈕即表示本人同意
+                    <a href="" class="fw-semibold">房東的《房屋守則》</a>、
+                    <a href="" class="fw-semibold">房客基本守則</a>、
+                    <a href="" class="fw-semibold">《重新預訂和退款政策》</a>，且允許 Airbnb 在我應負責賠償損壞時，可以
+                    <a href="" class="fw-semibold">向我的付款方式扣款</a>。
+                </p>
+                <div class="booking-button rounded">
+                    <p class="confirm-and-pay fs-5 text-center text-white px-5 py-4">確認並付款</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
